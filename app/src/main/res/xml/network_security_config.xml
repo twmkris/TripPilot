@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 允許 HTTPS 請求到 Google 服務 -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">generativelanguage.googleapis.com</domain>
+        <domain includeSubdomains="true">googleapis.com</domain>
+        <domain includeSubdomains="true">google.com</domain>
+    </domain-config>
+    
+    <!-- 允許所有 HTTPS 請求 -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+    
+    <!-- 開發環境可以允許明文流量（僅用於測試） -->
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="system"/>
+            <certificates src="user"/>
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config> 
